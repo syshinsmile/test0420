@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <html>
 
     <head>
@@ -28,7 +29,7 @@
         {
             if(confirm("로그아웃?"))
                 {
-                	location.href="LogOut.jsp";
+                	location.href="logOut.do";
                 }
          }
 
@@ -39,6 +40,15 @@
                 	$("#logInMordal").show();
                 })
             });
+        function SaveChange() {
+        	var input = $('.email').val();
+        	$('.modal-body').html(input);
+        	
+        	 	/*var div = $('.modal-body').html("");
+            	
+            	div=input;*/
+                
+            }
         </script>
         
         <style>
@@ -66,40 +76,16 @@
     
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">MatchingService</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="">Services</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" id = "logIn" href="#">로그인하기</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="BoardList.do">게시판</a></li>
-                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index1.do">수강신청 및 차트</a></li>
-                         <li class="nav-item"><a class="nav-link js-scroll-trigger" onclick="logout()" >로그아웃</a></li>
-                         
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        
         <div class = "logInMordal" id = "logInMordal">
-        	<button >
         </div>
-        
-        <!-- Masthead-->
+
+      <!-- Masthead-->
         <header class="masthead">
             <div class="container h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-10 align-self-end">
+                    <div class="col-lg-10 align-self-top">
                         <h1 class="text-uppercase text-white font-weight-bold">Matching Teacher Student</h1>
-                        
-                        
-                        <button class="testBtn"  value="학생"  />
-                        <button class="testBtn"  value="학생" />
-                        <button class="testBtn"  value="선생님"  /> 
-                        
-                        
+              
                         <!-- 상엽 -->
                         <a href= "RegistStudent.do" >학생 회원가입</a><br>
 	<a href="RegistTeacher.do">선생님 회원가입</a><br><br>
@@ -118,14 +104,41 @@
 	
 	
 	
+	     
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			 <a id="modal-899983" class="btn btn-primary btn-large" href="#modal-container-899983" role="button" data-toggle="modal">로그인</a>			
+			<div class="modal fade" id="modal-container-899983" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="myModalLabel">
+								로그인
+							</h5> 
+						</div>
+						<div class="modal-body">
+							
+						</div>
+						<div class="modal-footer">
+							 
+							<p>
+								<button type="button" onclick = "location.href = 'LoginStudent.do' " width="50px" height="50px">학생 로그인</button>
+							</p>
+							<p>
+								<button type="button" onclick = "location.href = 'LoginTeacher.do'">선생님 로그인</button>
+							</p>
+
+						</div>
+					</div>					
+				</div>
+			</div>
+</div>      
 	
 	
-                        <hr class="divider my-4" />
+                      
                     </div>
-                    <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 font-weight-light mb-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p>
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
-                    </div>
+                   
                 </div>
             </div>
         </header>

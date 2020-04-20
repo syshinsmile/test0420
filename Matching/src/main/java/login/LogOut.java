@@ -12,6 +12,6 @@ public class LogOut {
 	@RequestMapping
 	public String logOut(HttpSession session) {
 		session.invalidate();
-		return "index";
+		return "redirect:/index.jsp";
 	}
 }

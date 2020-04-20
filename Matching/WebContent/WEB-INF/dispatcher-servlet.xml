@@ -8,24 +8,29 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-<!-- 	
-<bean class="spring.service.SubjectDao" id="subjectDao">
-<property name="sqlSessionFactory">
-<ref bean="sqlSessionFactory"/>
-</property>
+	<!-- <bean class="spring.service.SubjectDao" id="subjectDao"> <property 
+		name="sqlSessionFactory"> <ref bean="sqlSessionFactory"/> </property> </bean> 
+		<bean class="spring.service.RankDao" id="rankDao"> <property name="sqlSessionFactory"> 
+		<ref bean="sqlSessionFactory"/> </property> </bean> -->
 
-</bean>
-<bean class="spring.service.RankDao" id="rankDao">
-<property name="sqlSessionFactory">
-<ref bean="sqlSessionFactory"/>
-</property>
-</bean>
- -->
-<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
-<property name="maxUploadSize" value="50000000"/>
-</bean>
 
-		
+	<bean
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"
+		id="tilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles_def/tilesdef.xml</value>
+			</list>
+		</property>
+		<property name="preparerFactoryClass"
+			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
+	</bean>
+	
+	<bean
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		id="multipartResolver">
+		<property name="maxUploadSize" value="50000000" />
+	</bean>
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
@@ -42,24 +47,22 @@
 	<context:component-scan
 		base-package="board.controller, board.DtoDaoService,
 		regist,regist_t,login,login_t,
-		admin.*,apply.*,upload.*;" 
-		/>
+		admin.*,apply.*,upload.*;" />
 
 	<!-- beanNameViewResolver -->
 	<bean
 		class="org.springframework.web.servlet.view.BeanNameViewResolver"
-		id="viewResolver1" 
-		/>
-
+		id="viewResolver1" />
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" id="tilesviewResolver"/>
 	<!-- -->
 	<bean id="viewResolver2"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/"/>
+		<property name="prefix" value="/WEB-INF/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
-	<bean id="StudentExcel" class="admin.download.StudentDownLoader"/>
-	<bean id="TeacherExcel" class="admin.download.TeacherDownLoader"/>
+
+	<bean id="StudentExcel" class="admin.download.StudentDownLoader" />
+	<bean id="TeacherExcel" class="admin.download.TeacherDownLoader" />
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<bean
